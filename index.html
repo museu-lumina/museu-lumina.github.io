@@ -1,197 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NEWSYNC - Sprite Uploader</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-    body {
-      font-family: 'Press Start 2P', cursive;
-      background-color: #0d1b2a;
-      color: #dcefff;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 40px;
-      color: #70d6ff;
-      text-shadow: 2px 2px #222;
-    }
-
-    label {
-      display: block;
-      margin: 20px 0 5px;
-    }
-
-    input[type="text"], input[type="file"], button {
-      width: 100%;
-      padding: 12px;
-      font-size: 14px;
-      border: 2px solid #5d8aa8;
-      background-color: #1e2a3a;
-      color: #dcefff;
-      border-radius: 0;
-      outline: none;
-    }
-
-    button {
-      margin-top: 20px;
-      background-color: #4da6ff;
-      border: 2px solid #89c4ff;
-      color: #001f33;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background-color: #70d6ff;
-      color: #000;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .gallery-item {
-      background-color: #1e2a3a;
-      padding: 10px;
-      border: 2px dashed #70d6ff;
-      text-align: center;
-    }
-
-    .gallery-item img {
-      max-width: 100%;
-      image-rendering: pixelated;
-      margin-bottom: 10px;
-      border: 2px solid #4da6ff;
-    }
-
-    .gallery-item h3 {
-      font-size: 0.8em;
-      margin: 5px 0;
-    }
-
-    .gallery-item p {
-      font-size: 0.6em;
-      color: #c0e0ff;
-    }
-
-    .status {
-      margin-top: 20px;
-      font-size: 0.8em;
-      color: #ff7070;
-      text-align: center;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Museu da Escola</title>
+  <link rel="stylesheet" href="museum.css" />
 </head>
+
 <body>
-  <div class="container">
-    <h1>NEWSYNC</h1>
-    <form id="uploadForm">
-      <label for="gameName">Game Name</label>
-      <input type="text" id="gameName" required>
 
-      <label for="characterName">Character Name</label>
-      <input type="text" id="characterName" required>
+  <!-- TITLE -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="museum-title">Museu da Escola</h1>
+    </div>
+  </header>
 
-      <label for="spriteSheet">Upload Sprite Sheet</label>
-      <input type="file" id="spriteSheet" accept="image/*" required>
+  <main>
 
-      <label for="thumbnail">Upload Thumbnail</label>
-      <input type="file" id="thumbnail" accept="image/*" required>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Bem-vindo ao Museu</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique orci nec orci feugiat placerat. Vivamus ut aliquet arcu.</p>
+        </div>
 
-      <button type="submit">Upload to NEWSYNC</button>
-    </form>
+        <img src="https://via.placeholder.com/600x350" class="hero-img" alt="Imagem do museu" />
+      </div>
+    </section>
 
-    <div class="status" id="status"></div>
+    <!-- HISTORY -->
+    <section class="section">
+      <div class="container">
+        <h2>História</h2>
 
-    <div class="gallery" id="gallery"></div>
-  </div>
+        <div class="two-col">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae urna at leo porta molestie. Cras viverra, lacus id viverra bibendum, nibh ipsum fermentum turpis, vitae aliquam massa sem ac erat.
+          </p>
 
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby44PYzACQSptVNhPHBEJC2wn5qXct9pAP_YkWXuz5GDRp20VnBuUW8H5mW_0SpRmrH/exec';
+          <img src="https://via.placeholder.com/400x300" class="rounded-img" alt="Foto histórica" />
+        </div>
 
-    async function uploadImageToImgbb(file) {
-      const formData = new FormData();
-      formData.append('image', file);
-      formData.append('key', '570475b637354a86bd9b4cc766cb891e');
+        <p class="mt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula mi non ligula pulvinar, eget iaculis sem laoreet.
+        </p>
+      </div>
+    </section>
 
-      const res = await fetch('https://api.imgbb.com/1/upload', {
-        method: 'POST',
-        body: formData
-      });
-      const data = await res.json();
-      if (data.success) return data.data.url;
-      throw new Error('Image upload failed');
-    }
+    <!-- GALLERY -->
+    <section class="section">
+      <div class="container">
+        <h2>Galeria</h2>
 
-    document.getElementById('uploadForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const gameName = document.getElementById('gameName').value.trim();
-      const characterName = document.getElementById('characterName').value.trim();
-      const spriteSheet = document.getElementById('spriteSheet').files[0];
-      const thumbnail = document.getElementById('thumbnail').files[0];
+        <div class="gallery-grid">
+          <img src="https://via.placeholder.com/350x250" alt="Foto 1" />
+          <img src="https://via.placeholder.com/350x250" alt="Foto 2" />
+          <img src="https://via.placeholder.com/350x250" alt="Foto 3" />
+          <img src="https://via.placeholder.com/350x250" alt="Foto 4" />
+        </div>
 
-      document.getElementById('status').textContent = 'Uploading images...';
+        <p class="mt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper ultrices risus non pulvinar.</p>
+      </div>
+    </section>
 
-      try {
-        const spriteUrl = await uploadImageToImgbb(spriteSheet);
-        const thumbUrl = await uploadImageToImgbb(thumbnail);
+    <!-- TIMELINE -->
+    <section class="section timeline">
+      <div class="container">
+        <h2>Linha do Tempo</h2>
 
-        await fetch(scriptURL, {
-          method: 'POST',
-          body: JSON.stringify({
-            game: gameName,
-            character: characterName,
-            sprite: spriteUrl,
-            thumbnail: thumbUrl
-          }),
-          headers: { 'Content-Type': 'application/json' }
-        });
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <h3>1990</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare in urna aliquet dapibus.</p>
+          </div>
+        </div>
 
-        document.getElementById('status').textContent = 'Upload successful!';
-        loadGallery(); // Refresh gallery
-        document.getElementById('uploadForm').reset();
-      } catch (err) {
-        document.getElementById('status').textContent = 'Upload failed: ' + err.message;
-      }
-    });
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <h3>2000</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare in urna aliquet dapibus.</p>
+          </div>
+        </div>
 
-    async function loadGallery() {
-      const res = await fetch(scriptURL);
-      const data = await res.json();
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = '';
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <h3>2010</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ornare in urna aliquet dapibus.</p>
+          </div>
+        </div>
 
-      data.reverse().forEach(entry => {
-        const div = document.createElement('div');
-        div.className = 'gallery-item';
-        div.innerHTML = `
-          <img src="${entry.thumbnail_url}" alt="Thumbnail">
-          <h3>${entry.character_name}</h3>
-          <p>${entry.game_name}</p>
-          <a href="${entry.sprite_url}" target="_blank">[ View Sprite Sheet ]</a>
-        `;
-        gallery.appendChild(div);
-      });
-    }
+      </div>
+    </section>
 
-    window.addEventListener('DOMContentLoaded', loadGallery);
-  </script>
+    <!-- ARTIFACTS -->
+    <section class="section">
+      <div class="container">
+        <h2>Artefatos</h2>
+
+        <div class="artifacts-grid">
+          <div class="artifact-card">
+            <img src="https://via.placeholder.com/300x200" alt="Artefato 1" />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+
+          <div class="artifact-card">
+            <img src="https://via.placeholder.com/300x200" alt="Artefato 2" />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+
+          <div class="artifact-card">
+            <img src="https://via.placeholder.com/300x200" alt="Artefato 3" />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Museu da Escola — Página demonstrativa</p>
+  </footer>
+
 </body>
 </html>

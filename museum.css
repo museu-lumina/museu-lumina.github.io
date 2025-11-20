@@ -1,0 +1,155 @@
+/* Clean, modern layout based on your style */
+
+/* basic reset */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family: Inter, Arial, sans-serif;
+  color:#222;
+  background:#fff;
+  line-height:1.5;
+}
+
+.container{
+  width:min(1100px, 90%);
+  margin:0 auto;
+}
+
+/* TITLE */
+.site-header{
+  padding:2rem 0;
+  text-align:center;
+}
+.museum-title{
+  font-size:2rem;
+  font-weight:800;
+  color:#0b2b3b;
+}
+
+/* HERO */
+.hero{
+  background: linear-gradient(180deg,#f4f9ff,#ffffff);
+  padding:3rem 0;
+}
+.hero-inner{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  align-items:center;
+}
+.hero-text{
+  flex:1 1 300px;
+}
+.hero-text h2{
+  font-size:1.8rem;
+  color:#0b2b3b;
+  margin-bottom:0.5rem;
+}
+.hero-text p{
+  color:#334155;
+  max-width:50ch;
+}
+.hero-img{
+  flex:1 1 350px;
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* SECTIONS */
+.section{
+  padding:3rem 0;
+}
+.section h2{
+  font-size:1.6rem;
+  margin-bottom:1.5rem;
+  color:#0b2b3b;
+  text-align:left;
+}
+
+/* TWO COLUMN */
+.two-col{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  align-items:center;
+}
+.two-col img{
+  width:100%;
+  max-width:400px;
+}
+.rounded-img{
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+.mt{margin-top:1rem;}
+
+/* GALLERY */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1rem;
+}
+.gallery-grid img{
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* TIMELINE */
+.timeline-item{
+  display:flex;
+  gap:1rem;
+  margin-bottom:1.5rem;
+  position:relative;
+  padding-left:2rem;
+}
+.dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#0b5bff;
+  position:absolute;
+  left:0;
+  top:4px;
+}
+.timeline-item h3{
+  font-size:1.2rem;
+  margin-bottom:0.3rem;
+}
+
+/* ARTIFACTS */
+.artifacts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1rem;
+}
+.artifact-card{
+  background:#fff;
+  border-radius:12px;
+  padding:1rem;
+  border:1px solid rgba(0,0,0,0.05);
+  box-shadow:0 6px 18px rgba(0,0,0,0.04);
+  text-align:center;
+}
+.artifact-card img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:0.7rem;
+}
+
+/* FOOTER */
+.site-footer{
+  padding:1.5rem 0;
+  text-align:center;
+  color:#637286;
+  border-top:1px solid rgba(0,0,0,0.05);
+  margin-top:2rem;
+}
+
+/* MOBILE */
+@media (max-width:700px){
+  .hero-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
